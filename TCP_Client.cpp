@@ -32,7 +32,7 @@ TCP_Client::TCP_Client()
 }
 
 
-unsigned long TCP_Client::send_msg(SOCKET s, const std::string& msg)
+int TCP_Client::send_msg(SOCKET s, const std::string& msg)
 {
 	return send(s, msg.c_str(), msg.length(), 0);
 }
@@ -45,4 +45,9 @@ TCP_Client::~TCP_Client()
 SOCKET TCP_Client::create_socket(int address_family, int socket_type, int protocol)
 {
 	return socket(address_family, socket_type, protocol);
+}
+
+int TCP_Client::close_socket(SOCKET s)
+{
+	return closesocket(s);
 }

@@ -73,7 +73,7 @@ int main(int argc, char *argv[])
 {
 
 	SOCKET s;
-	struct sockaddr_in server;
+	sockaddr_in server;
 	TCP_Client client;
 	/*printf("\nInitialising Winsock...");
 	if (WSAStartup(MAKEWORD(2, 2), &wsa) != 0)
@@ -123,6 +123,6 @@ int main(int argc, char *argv[])
 	//Add a NULL terminating character to make it a proper string before printing
 	server_reply[recv_size] = '\0';
 	puts(server_reply);
-
+	client.close_socket(s);
 	return 0;
 }
