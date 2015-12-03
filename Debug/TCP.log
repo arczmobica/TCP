@@ -1,0 +1,6 @@
+﻿  TCP.cpp
+TCP.cpp(9,8): warning : unused type alias 'vec_of_string' [-Wunused-local-typedef]
+          using vec_of_string = vector<string>;
+                ^
+  1 warning generated.
+  TCP.vcxproj -> C:\Users\MAOE\documents\visual studio 2015\Projects\TCP\Debug\TCP.exe

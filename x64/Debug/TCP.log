@@ -1,0 +1,5 @@
+﻿  TCP.cpp
+c:\users\maoe\documents\visual studio 2015\projects\tcp\tcp\tcp.cpp(104): warning C4996: 'inet_addr': Use inet_pton() or InetPton() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+  c:\program files (x86)\windows kits\8.1\include\um\winsock2.h(1850): note: see declaration of 'inet_addr'
+c:\users\maoe\documents\visual studio 2015\projects\tcp\tcp\tcp.cpp(74): warning C4101: 'wsa': unreferenced local variable
+  TCP.vcxproj -> C:\Users\MAOE\documents\visual studio 2015\Projects\TCP\x64\Debug\TCP.exe
