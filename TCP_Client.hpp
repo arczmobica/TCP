@@ -40,5 +40,6 @@ public:
 	virtual ~TCP_Client();
 
 	SOCKET create_socket(int address_family, int socket_type,int protocol);
+	unsigned long send_msg(SOCKET s, const std::string& msg);
 };
 

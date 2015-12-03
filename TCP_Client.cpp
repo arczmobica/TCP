@@ -32,6 +32,11 @@ TCP_Client::TCP_Client()
 }
 
 
+unsigned long TCP_Client::send_msg(SOCKET s, const std::string& msg)
+{
+	return send(s, msg.c_str(), msg.length(), 0);
+}
+
 TCP_Client::~TCP_Client()
 {
 	//close sockets?

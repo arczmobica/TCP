@@ -71,7 +71,7 @@ vector<string> parse_args(const int argc,const char*const* args_)
 
 int main(int argc, char *argv[])
 {
-	WSADATA wsa;
+
 	SOCKET s;
 	struct sockaddr_in server;
 	TCP_Client client;
@@ -86,33 +86,43 @@ int main(int argc, char *argv[])
 
 	//Create a socket
 	s = { client.create_socket(Address_Family<AF_INET>(), Socket_Type<SOCK_STREAM>(), Protocol::None) };
-	auto family = Address_Family<AF_INET6>();
-	auto fam = AF_INET6;
-	/*s = socket(AF_INET, SOCK_STREAM, 0);
-			if (s == INVALID_SOCKET)
-			{
-				puts("Invalid Socket");
-			}*/
-	/*if ((s = socket(AF_INET, SOCK_STREAM, 0)) == INVALID_SOCKET)
-	{
-		printf("Could not create socket : %d", WSAGetLastError());
-	}
+	
+	
 
-	printf("Socket created.\n");*/
-
-
-	server.sin_addr.s_addr = inet_addr("74.125.235.20");
+	//74.125.235.20
+	//
+	//GET / HTTP/1.1\r\n\r\n
+	server.sin_addr.s_addr = inet_addr("127.0.0.1");
 	server.sin_family = AF_INET;
 	server.sin_port = htons(80);
 
 	//Connect to remote server
-	if (connect(s, (struct sockaddr *)&server, sizeof(server)) < 0)
+	if (connect(s, (sockaddr *)&server, sizeof(server)) < 0)
 	{
 		puts("connect error");
 		return 1;
 	}
-
 	puts("Connected");
+
+	if (client.send_msg(s,"GET / HTTP/1.1\r\n\r\n") < 0)
+	{
+		puts("Cannot send");
+	}
+	puts("Message sent");
+
+	//Receive a reply from the server
+	int recv_size{0};
+	char server_reply[2000];
+	if ((recv_size = recv(s, server_reply, 2000, 0)) == SOCKET_ERROR)
+	{
+		puts("recv failed");
+	}
+
+	puts("Reply received\n");
+
+	//Add a NULL terminating character to make it a proper string before printing
+	server_reply[recv_size] = '\0';
+	puts(server_reply);
 
 	return 0;
 }

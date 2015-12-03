@@ -1,5 +1,12 @@
 ﻿  TCP.cpp
-c:\users\maoe\documents\visual studio 2015\projects\tcp\tcp\tcp.cpp(104): warning C4996: 'inet_addr': Use inet_pton() or InetPton() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
-  c:\program files (x86)\windows kits\8.1\include\um\winsock2.h(1850): note: see declaration of 'inet_addr'
-c:\users\maoe\documents\visual studio 2015\projects\tcp\tcp\tcp.cpp(74): warning C4101: 'wsa': unreferenced local variable
+TCP.cpp(95,27): warning : 'inet_addr' is deprecated: Use inet_pton() or InetPton() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings [-Wdeprecated-declarations]
+          server.sin_addr.s_addr = inet_addr("127.0.0.1");
+                                   ^
+  C:\Program Files (x86)\Windows Kits\8.1\Include\um\winsock2.h(1850,1) :  note: 'inet_addr' has been explicitly marked deprecated here
+  inet_addr(
+  ^
+TCP.cpp(107,50): warning : comparison of unsigned expression < 0 is always false [-Wtautological-compare]
+          if (client.send_msg(s,"GET / HTTP/1.1\r\n\r\n") < 0)
+              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ^ ~
+  2 warnings generated.
   TCP.vcxproj -> C:\Users\MAOE\documents\visual studio 2015\Projects\TCP\x64\Debug\TCP.exe
